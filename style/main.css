@@ -1,0 +1,58 @@
+section.header .container .time .columnsAsign {
+  animation: showAndHide 1s ease infinite;
+}
+
+@keyframes showAndHide {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.curser {
+  cursor: pointer !important;
+}
+
+.height {
+  height: 150px !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.active {
+  position: relative;
+  height: auto !important;
+  background: url(../assets/images/istockphoto-1291549435-612x612.jpg) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  color: white;
+}
+.active::before {
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.active p, .active .coming {
+  position: relative;
+}
+
+.spiners {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #e0ded9;
+  width: 100%;
+  z-index: 3;
+}/*# sourceMappingURL=main.css.map */

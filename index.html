@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقيت الصلاه</title>
+    <!-- 
+        -- favicon
+    -->
+    <link rel="shortcut icon"
+        href="data:image/jpeg;base64,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">
+    <!-- 
+        -- style
+    -->
+    <link rel="stylesheet" href="./style/bootstrap.css">
+    <link rel="stylesheet" href="./style/main.css">
+
+    <!-- 
+        -- font awesome
+    -->
+    <link rel="stylesheet" href="./style/all.min.css">
+
+    <!-- 
+        -- all js file
+    -->
+    <script src="./assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="./assets/js/main.js" defer></script>
+</head>
+
+<body>
+    <section class="header border border-1">
+        <div class="container d-flex justify-content-between px-2 pt-2">
+            <div class="year">
+                <p class="fs-4 text-capitalize"> saterday <span class="day fw-light fs-5 text-black-50"></span><span
+                        id="month" class="day fw-light fs-5 text-black-50"></span></p>
+            </div>
+            <div class="time d-flex fs-3 gap-1">
+                <p class="hours "></p>
+                <p class="columnsAsign ">:</p>
+                <p class="minutes text-danger"></p>
+            </div>
+        </div>
+    </section>
+    <section class="search mt-5">
+        <form class="container ">
+            <div class="row">
+                <div class="input-group mb-3 col">
+                    <span class="input-group-text curser" id="basic-addon1"><i
+                            class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" class="form-control fs-4"  aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="col-4">
+                    <select id="inputState" class="form-select curser">
+                        <option>Dubai</option>
+                        <option>cairo</option>
+                        <option>sudan</option>
+                        <option>Riyadh</option>
+                        <option>Istanbul</option>
+                        <option>london</option>
+                        <option>tunis</option>
+                        <option>Rome</option>
+                    </select>
+                </div>
+            </div>
+
+        </form>
+        <div class="container border p-5 rounded-4 shadow-lg position-relative">
+            <div class="spiners d-flex justify-content-center align-items-center hidden">
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+            </div>
+            <h1 class="mb-5" id="city"></h1>
+            <div class="Info ">
+                <div class="row py-5 gap-4 text-center d-flex justify-content-center align-items-center" id="prayer">
+                    <div class="col-6 col-lg  border rounded-3 shadow p-2 d-flex justify-content-center flex-column height" >
+                        <div class="coming hidden ">
+                            <p>Up comming prayer</p>
+                            <div id="timer" class="d-flex justify-content-center fs-2">
+                                <p class="hours ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="minutes ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="seconds text-primary">s</p>
+                            </div>
+                        </div>
+                        <p class="fs-3">Fajr</p>
+                        <p class="fw-light salah"></p>
+                    </div>
+                    <div class="col-6 col-lg  border  rounded-3 shadow p-2 d-flex justify-content-center flex-column height">
+                        <div class="coming hidden">
+                            <p>Up comming prayer</p>
+                            <div id="timer" class="d-flex justify-content-center fs-2">
+                                <p class="hours text-primary">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="minutes ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="seconds text-primary">s</p>
+                            </div>
+                        </div>
+                        <p class="fs-3">Dhuhr</p>
+                        <p class="fw-light salah"></p>
+                    </div>
+                    <div class="col-6 col-lg  border rounded-3 shadow p-2 d-flex justify-content-center flex-column height">
+                        <div class="coming">
+                            <p>Up comming prayer</p>
+                            <div id="timer" class="d-flex justify-content-center fs-2">
+                                <p class="hours ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="minutes ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="seconds ">s</p>
+                            </div>
+                        </div>
+                
+                        <p class="fs-3">Asr</p>
+                        <p class="fw-light salah">${Asr}</p>
+                    </div>
+                    <div class="col-6 col-lg  border rounded-3 shadow p-2 d-flex justify-content-center flex-column height">
+                        <div class="coming hidden">
+                            <p>Up comming prayer</p>
+                            <div id="timer" class="d-flex justify-content-center fs-2">
+                                <p class="hours ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="minutes ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="seconds ">s</p>
+                            </div>
+                        </div>
+                        <p class="fs-3">Maghrib</p>
+                        <p class="fw-light salah"></p>
+                    </div>
+                    <div class="col-6 col-lg  border rounded-3 shadow p-2 d-flex justify-content-center flex-column height">
+                        <div class="coming hidden">
+                            <p>Up comming prayer</p>
+                            <div id="timer" class="d-flex justify-content-center fs-2">
+                                <p class="hours ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="minutes ">s</p>
+                                <p class="columnsAsign ">:</p>
+                                <p class="seconds ">s</p>
+                            </div>
+                        </div>
+                        <p class="fs-3">Isha</p>
+                        <p class="fw-light salah"></p>
+                    </div>
+                </div>
+            </div>
+            <h3 id="regionName"></h3>
+        </div>
+    </section>
+
+
+
+
+</body>
+
+</html>
