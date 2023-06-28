@@ -1,14 +1,25 @@
 // get time now
+
+const days = {
+  0: "sunday",
+  1: "monday",
+  2: "tuesday",
+  3: "wednesday",
+  4: "thursday",
+  5: "friday",
+  6: "saturday",
+};
 function getTimeNow() {
   const now = new Date();
   const month = now.toLocaleString("en-US", { month: "long" });
   document.querySelector(".header .container .time .hours").textContent =
-    new Date().getHours();
+    now.getHours();
   document.querySelector(".header .container .time .minutes").textContent =
-    new Date().getMinutes();
+    now.getMinutes();
   document.querySelector(".header .container .year .day").textContent =
-    new Date().getDate();
+    now.getDate();
   document.getElementById("month").textContent = month;
+  document.getElementById("header-day").textContent = days[now.getDay()];
 }
 
 setInterval(getTimeNow, 1000);
@@ -36,7 +47,10 @@ btnSearch.addEventListener("click", () => {
   let searchValue = inputSearch.value.toLowerCase().trim();
   localStorage.setItem("search", searchValue);
   getApiData(localStorage.getItem("search"));
-  addPreloaderEvents()
+  /*
+      -- add function to make spinner when user search for new result
+  */
+  addPreloaderEvents();
 });
 
 //  to make localStorage work with directly
@@ -101,12 +115,13 @@ function getActive(timeOfSalh) {
   let arr = [];
   for (let i = 0; i < 5; i++) {
     if (formatTime() > timeOfSalh[i].innerHTML) {
-        if(formatTime() >= timeOfSalh[4].innerHTML){
-            addClassHiddenAndClassActive(timeOfSalh[4].parentNode)
-            return;
-        }
+      if (formatTime() >= timeOfSalh[4].innerHTML) {
+        addClassHiddenAndClassActive(timeOfSalh[4].parentNode);
+        return;
+      }
       arr.push(timeOfSalh[i + 1]);
-    }if (formatTime() < timeOfSalh[0].innerHTML) {
+    }
+    if (formatTime() < timeOfSalh[0].innerHTML) {
       addClassHiddenAndClassActive(timeOfSalh[0].parentNode);
       return;
     }
@@ -137,42 +152,53 @@ function addClassHiddenAndClassActive(parent) {
   parent.classList.add("active");
   parent.children[0].classList.remove("hidden");
   checkClass(parent);
-  
 }
 
-function checkClass(parent){
-        const getYear = new Date().getFullYear();
-        const getMonth = new Date().getMonth() +1;
-        const getDay = new Date().getDate();
-        function updateTimer() {
-            const targetDate = new Date(`${getYear}-${getMonth}-${getDay} ${parent.children[2].innerHTML}`);
-            console.log(targetDate);
-            // Get the current date and time
-            const currentDate = new Date();
-          
-            // Calculate the remaining time in milliseconds
-            const remainingTime = targetDate - currentDate;
-            // Calculate the remaining hours, minutes, and seconds
-            const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-          
-            // Display the remaining time in the timer element
-            document.querySelector(".active #timer").innerHTML=`${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`
-        
-        }
-        setInterval(updateTimer, 1000)
+function checkClass(parent) {
+  const getYear = new Date().getFullYear();
+  const getMonth = new Date().getMonth() + 1;
+  const getDay = new Date().getDate();
+  function updateTimer() {
+    const targetDate = new Date(
+      `${getYear}-${getMonth}-${getDay} ${parent.children[2].innerHTML}`
+    );
+    console.log(targetDate);
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Calculate the remaining time in milliseconds
+    const remainingTime = targetDate - currentDate;
+    // Calculate the remaining hours, minutes, and seconds
+    const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+    const minutes = Math.floor(
+      (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    // Display the remaining time in the timer element
+    document.querySelector(".active #timer").innerHTML = `${hours
+      .toString()
+      .padStart(2, "0")} : ${minutes.toString().padStart(2, "0")} : ${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  }
+  setInterval(updateTimer, 1000);
 }
 
+/*
+      -- add preloader events before the response complete 
+*/
 
-//  add preloader events before the response complete 
- 
-function addPreloaderEvents(){
-      setTimeout(()=>{
-        document.querySelector(".spiners").classList.add("hidden")
-    },1500 )
+function addPreloaderEvents() {
+  setTimeout(() => {
+    document.querySelector(".spiners").classList.add("hidden");
+  }, 1500);
 
-    document.querySelector(".spiners").classList.remove("hidden")
+  document.querySelector(".spiners").classList.remove("hidden");
 }
 
+/*
+      -- add function to make spinner when user load the page
+*/
 
+window.addEventListener("load", addPreloaderEvents);
